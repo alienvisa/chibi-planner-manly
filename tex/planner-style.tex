@@ -12,7 +12,7 @@
 \definecolor{softlav}{HTML}{EFEAFB}
 \definecolor{catmint}{HTML}{CFEFE8}
 \definecolor{catcream}{HTML}{FFF8EE}
-\definecolor{catink}{HTML}{26242A}
+\definecolor{catink}{HTML}{141217}
 \definecolor{softgray}{HTML}{EEF0F3}
 \definecolor{linegray}{HTML}{56525B}
 \definecolor{catbrown}{HTML}{8C5A4A}
@@ -23,58 +23,64 @@
 \newcommand{\sectionlabel}[1]{\node[font=\labelfont, text=catink] at (0,0) {#1};}
 
 \newcommand{\plannerbg}{%
-  \begin{tikzpicture}[remember picture,overlay,x=1cm,y=1cm]
-    \fill[white] (0,0) rectangle (\pagew,\pageh);
-    \fill[left color=softblue,right color=softpink] (0.55,0.55) rectangle (\pagew-0.55,\pageh-0.55);
-    \foreach \x in {0.9,1.65,...,28.8} {\draw[white,opacity=.45,line width=.25pt] (\x,0.55)--(\x,\pageh-0.55);}
-    \foreach \y in {0.9,1.65,...,20.1} {\draw[white,opacity=.45,line width=.25pt] (0.55,\y)--(\pagew-0.55,\y);}
-    \foreach \x/\y in {1.0/3.2,1.0/8.2,1.0/13.4,28.75/4.8,28.75/10.5,28.75/15.7} {
-      \node[white,opacity=.8,font=\large] at (\x,\y) {$\heartsuit$};
-    }
-  \end{tikzpicture}%
+  \fill[white] (0,0) rectangle (\pagew,\pageh);
+  \fill[left color=softblue,right color=softpink] (0.55,0.55) rectangle (\pagew-0.55,\pageh-0.55);
+  \foreach \x in {0.9,1.65,...,28.8} {\draw[white,opacity=.45,line width=.25pt] (\x,0.55)--(\x,\pageh-0.55);}
+  \foreach \y in {0.9,1.65,...,20.1} {\draw[white,opacity=.45,line width=.25pt] (0.55,\y)--(\pagew-0.55,\y);}
+  \foreach \x/\y in {1.0/3.2,1.0/8.2,1.0/13.4,28.75/4.8,28.75/10.5,28.75/15.7} {
+    \node[white,opacity=.8,font=\large] at (\x,\y) {$\heartsuit$};
+  }
 }
 
 \newcommand{\blankpagebg}{%
-  \begin{tikzpicture}[remember picture,overlay,x=1cm,y=1cm]
-    \fill[palepink] (0,0) rectangle (\pagew,\pageh);
-    \foreach \x in {1,2,...,28} {\draw[white,line width=.35pt] (\x,0)--(\x,\pageh);}
-    \foreach \y in {1,2,...,20} {\draw[white,line width=.35pt] (0,\y)--(\pagew,\y);}
-  \end{tikzpicture}%
+  \fill[palepink] (0,0) rectangle (\pagew,\pageh);
+  \foreach \x in {1,2,...,28} {\draw[white,line width=.35pt] (\x,0)--(\x,\pageh);}
+  \foreach \y in {1,2,...,20} {\draw[white,line width=.35pt] (0,\y)--(\pagew,\y);}
 }
 
-\newcommand{\newplannerpage}{\clearpage\plannerbg\begin{tikzpicture}[remember picture,overlay,x=1cm,y=1cm]}
-\newcommand{\finishplannerpage}{\end{tikzpicture}}
-\newcommand{\newdecorpage}{\clearpage\blankpagebg\begin{tikzpicture}[remember picture,overlay,x=1cm,y=1cm]}
-\newcommand{\finishdecorpage}{\end{tikzpicture}}
+\newcommand{\newplannerpage}{\begin{tikzpicture}[x=1cm,y=1cm]\useasboundingbox (0,0) rectangle (\pagew,\pageh);\plannerbg}
+\newcommand{\finishplannerpage}{\end{tikzpicture}\clearpage}
+\newcommand{\newdecorpage}{\begin{tikzpicture}[x=1cm,y=1cm]\useasboundingbox (0,0) rectangle (\pagew,\pageh);\blankpagebg}
+\newcommand{\finishdecorpage}{\end{tikzpicture}\clearpage}
 
 \newcommand{\panel}[4]{% x y w h
-  \fill[white,blur shadow={shadow blur steps=5,shadow opacity=.18}] ({#1},{#2}) rectangle ++(#3,#4);
-  \draw[catink,line width=.7pt] ({#1},{#2}) rectangle ++(#3,#4);
+  \fill[white,blur shadow={shadow blur steps=5,shadow opacity=.22}] ({#1},{#2}) rectangle ++(#3,#4);
+  \draw[catink,line width=.95pt] ({#1},{#2}) rectangle ++(#3,#4);
 }
 \newcommand{\roundpanel}[4]{%
-  \fill[white,rounded corners=8pt,blur shadow={shadow blur steps=5,shadow opacity=.16}] ({#1},{#2}) rectangle ++(#3,#4);
-  \draw[catink,line width=.7pt,rounded corners=8pt] ({#1},{#2}) rectangle ++(#3,#4);
+  \fill[white,rounded corners=8pt,blur shadow={shadow blur steps=6,shadow opacity=.24}] ({#1},{#2}) rectangle ++(#3,#4);
+  \draw[catink,line width=1.05pt,rounded corners=8pt] ({#1},{#2}) rectangle ++(#3,#4);
 }
 \newcommand{\headerbar}[4]{% x y w title
   \fill[catpink] ({#1},{#2}) rectangle ++(#3,.65);
-  \draw[catink,line width=.55pt] ({#1},{#2}) rectangle ++(#3,.65);
+  \draw[catink,line width=.75pt] ({#1},{#2}) rectangle ++(#3,.65);
   \node[font=\fontsize{7}{8}\selectfont\bfseries, text=white] at ({#1+#3/2},{#2+.33}) {\MakeUppercase{#4}};
   \node[circle,draw=white,fill=softlav,inner sep=1.7pt,font=\tiny] at ({#1+#3/2-3.2},{#2+.33}) {$\star$};
   \node[circle,draw=white,fill=softlav,inner sep=1.7pt,font=\tiny] at ({#1+#3/2+3.2},{#2+.33}) {$\star$};
 }
+\newcommand{\plannerbadge}{%
+  \node[circle,fill=white,draw=catpink,line width=.9pt,minimum size=8mm] at (14.85,18.58) {};
+  \node[circle,fill=softpink,draw=white,line width=.6pt,minimum size=5.8mm] at (14.85,18.58) {};
+  \node[font=\tiny,text=catbrown] at (14.85,18.58) {$\heartsuit$};
+}
+\newcommand{\edgeornaments}{%
+  \foreach \x/\y in {3.25/2.25,26.45/2.25,3.25/18.65,26.45/18.65,14.85/1.9,14.85/18.95} {
+    \node[star,star points=4,draw=catink,fill=white,line width=.55pt,minimum size=4.2mm,inner sep=0pt] at (\x,\y) {};
+  }
+  \draw[catink,line width=.45pt] (4.0,18.68)--(13.85,18.68);
+  \draw[catink,line width=.45pt] (15.85,18.68)--(25.7,18.68);
+}
 \newcommand{\mainframe}[1]{%
   \roundpanel{3.0}{2.0}{23.7}{16.9}
   \headerbar{4.6}{18.05}{20.5}{#1}
-  \foreach \x/\y in {3.25/2.25,26.45/2.25,3.25/18.65,26.45/18.65,14.85/1.9,14.85/18.95} {
-    \node[font=\scriptsize,fill=white,inner sep=0pt] at (\x,\y) {$\diamond$};
-  }
+  \plannerbadge\edgeornaments
 }
 \newcommand{\linedbox}[5]{% x y w h title
   \panel{#1}{#2}{#3}{#4}
   \fill[softlav] ({#1},{#2+#4-.55}) rectangle ++(#3,.55);
   \draw[catink,line width=.45pt] ({#1},{#2+#4-.55}) rectangle ++(#3,.55);
   \node[font=\labelfont] at ({#1+#3/2},{#2+#4-.28}) {#5};
-  % Editable writing area; users may add/remap guide lines here.
+  \foreach \lineidx in {1,...,10} {\pgfmathsetmacro{\liney}{#2+.25+\lineidx*.43}\draw[linegray!38,line width=.25pt] ({#1+.16},\liney)--({#1+#3-.16},\liney);}
 }
 \newcommand{\gridbox}[6]{% x y w h cols rows
   \panel{#1}{#2}{#3}{#4}
@@ -121,10 +127,10 @@
 \newcommand{\coverpage}{%
   \newdecorpage
     \fill[softpink] (0,0) rectangle (\pagew,\pageh);
-    \fill[white] (14.85,10.9) circle (4.9);
-    \fill[catpink] (14.85,10.9) circle (4.45);
-    \fill[white] (14.85,10.9) circle (4.1);
-    \chibicat{14.85}{9.9}{2.15}
+    \fill[white] (14.85,10.9) circle (5.55);
+    \fill[catpink] (14.85,10.9) circle (5.05);
+    \fill[white] (14.85,10.9) circle (4.65);
+    \chibicat{14.85}{9.75}{2.85}
   \finishdecorpage
 }
 

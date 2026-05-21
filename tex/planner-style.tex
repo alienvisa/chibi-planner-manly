@@ -48,16 +48,16 @@
 \newcommand{\finishdecorpage}{\end{tikzpicture}}
 
 \newcommand{\panel}[4]{% x y w h
-  \fill[white,blur shadow={shadow blur steps=5,shadow opacity=.18}] ({#1},{#2}) rectangle ++({#3},{#4});
-  \draw[catink,line width=.7pt] ({#1},{#2}) rectangle ++({#3},{#4});
+  \fill[white,blur shadow={shadow blur steps=5,shadow opacity=.18}] ({#1},{#2}) rectangle ++(#3,#4);
+  \draw[catink,line width=.7pt] ({#1},{#2}) rectangle ++(#3,#4);
 }
 \newcommand{\roundpanel}[4]{%
-  \fill[white,rounded corners=8pt,blur shadow={shadow blur steps=5,shadow opacity=.16}] ({#1},{#2}) rectangle ++({#3},{#4});
-  \draw[catink,line width=.7pt,rounded corners=8pt] ({#1},{#2}) rectangle ++({#3},{#4});
+  \fill[white,rounded corners=8pt,blur shadow={shadow blur steps=5,shadow opacity=.16}] ({#1},{#2}) rectangle ++(#3,#4);
+  \draw[catink,line width=.7pt,rounded corners=8pt] ({#1},{#2}) rectangle ++(#3,#4);
 }
 \newcommand{\headerbar}[4]{% x y w title
-  \fill[catpink] ({#1},{#2}) rectangle ++({#3},{.65});
-  \draw[catink,line width=.55pt] ({#1},{#2}) rectangle ++({#3},{.65});
+  \fill[catpink] ({#1},{#2}) rectangle ++(#3,.65);
+  \draw[catink,line width=.55pt] ({#1},{#2}) rectangle ++(#3,.65);
   \node[font=\fontsize{7}{8}\selectfont\bfseries, text=white] at ({#1+#3/2},{#2+.33}) {\MakeUppercase{#4}};
   \node[circle,draw=white,fill=softlav,inner sep=1.7pt,font=\tiny] at ({#1+#3/2-3.2},{#2+.33}) {$\star$};
   \node[circle,draw=white,fill=softlav,inner sep=1.7pt,font=\tiny] at ({#1+#3/2+3.2},{#2+.33}) {$\star$};
@@ -71,8 +71,8 @@
 }
 \newcommand{\linedbox}[5]{% x y w h title
   \panel{#1}{#2}{#3}{#4}
-  \fill[softlav] ({#1},{#2+#4-.55}) rectangle ++({#3},{.55});
-  \draw[catink,line width=.45pt] ({#1},{#2+#4-.55}) rectangle ++({#3},{.55});
+  \fill[softlav] ({#1},{#2+#4-.55}) rectangle ++(#3,.55);
+  \draw[catink,line width=.45pt] ({#1},{#2+#4-.55}) rectangle ++(#3,.55);
   \node[font=\labelfont] at ({#1+#3/2},{#2+#4-.28}) {#5};
   \foreach \yy in {#2+.45,#2+.95,...,#2+#4-0.95} {\draw[linegray!35,line width=.25pt] ({#1+.15},{\yy})--({#1+#3-.15},{\yy});}
 }

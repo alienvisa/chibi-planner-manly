@@ -1,50 +1,55 @@
-# Chibi planner
+# Chibi Planner
 
-Editable LaTeX recreation of the **Chibi Cat Digital Planner** layout for Overleaf and other LaTeX editors.
+A LaTeX/Overleaf-managed reconstruction of the Chibi Cat Digital Planner.
 
-## What this repo contains
+## Build modes
 
-- `main.tex` — complete planner document.
-- `tex/planner-style.tex` — reusable TikZ/LaTeX layout macros, colors, grids, headers, and section boxes.
-- `tex/planner-pages.tex` — page sequence and page-specific content.
-- `.github/workflows/build.yml` — GitHub Actions PDF build.
+This repo now contains two versions:
 
-## Build locally
+1. **Pixel-perfect source-backed planner** — `main.tex`
+   - Uses the original PDF pages as full-page LaTeX backgrounds.
+   - This is the closest possible visual recreation because it preserves the exported Canva artwork exactly.
+   - Best for printing, sharing, and maintaining a faithful PDF from Overleaf/GitHub Actions.
 
-Install a reasonably complete LaTeX distribution, then run:
+2. **Editable TikZ reconstruction** — `editable-reconstruction.tex`
+   - Rebuilds the planner with LaTeX/TikZ templates.
+   - Easier to modify structurally, but not pixel-perfect.
+   - Useful as a starting point for replacing page backgrounds with fully editable elements over time.
+
+## Build on Overleaf
+
+Upload/import the repository and compile `main.tex` for the pixel-perfect version.
+
+To work on the editable approximation, set Overleaf's main document to:
+
+```text
+editable-reconstruction.tex
+```
+
+## Local build
+
+With a full TeX installation:
 
 ```bash
 latexmk -pdf main.tex
 ```
 
-If `latexmk` is unavailable:
+Or with Docker:
 
 ```bash
-pdflatex main.tex
-pdflatex main.tex
+docker run --rm -v "$PWD:/work" -w /work ghcr.io/xu-cheng/texlive-full:latest \
+  latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-The compiled PDF will be `main.pdf`.
+## Files
 
-## Use on Overleaf
-
-1. Create a new Overleaf project.
-2. Upload `main.tex` and the `tex/` folder.
-3. Set the compiler to **pdfLaTeX**.
-4. Compile.
-
-## Editing guide
-
-- Change colors in `tex/planner-style.tex` under `\definecolor`.
-- Add/remove planner pages in `tex/planner-pages.tex`.
-- Most page templates are built from reusable commands such as:
-  - `\weeklyplannerpage`
-  - `\mealplannerpage`
-  - `\selfcarepage`
-  - `\medicationpage`
-  - `\dailyplannerpage{Monday}`
-  - `\trackerpage{Water Tracker}`
+- `main.tex` — pixel-perfect source-backed planner
+- `editable-reconstruction.tex` — editable TikZ reconstruction
+- `tex/planner-style.tex` — reusable TikZ styles/templates
+- `tex/planner-pages.tex` — editable reconstruction page order
+- `source/chibi-cat-digital-planner.pdf` — source page artwork used by `main.tex`
+- `docs/page-map.md` — page structure notes
 
 ## Notes
 
-This is a clean editable LaTeX reconstruction, not a pixel-perfect PDF trace. The structure, pastel chibi style, planner sections, tables, and editable text are recreated with LaTeX/TikZ so the planner can be maintained as source code.
+The pixel-perfect version is faithful because it embeds the source pages. The editable reconstruction remains available for gradual conversion into editable LaTeX components.

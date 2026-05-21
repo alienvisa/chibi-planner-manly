@@ -27,21 +27,21 @@
 
 \newcommand{\plannerbg}{%
   \fill[forgeblack] (0,0) rectangle (\pagew,\pageh);
-  \fill[left color=softblue,right color=palepink] (0.55,0.55) rectangle (\pagew-0.55,\pageh-0.55);
-  \draw[catink,line width=1.4pt] (0.55,0.55) rectangle (\pagew-0.55,\pageh-0.55);
-  \foreach \x in {0.9,1.65,...,28.8} {\draw[catink,opacity=.10,line width=.25pt] (\x,0.55)--(\x,\pageh-0.55);}
-  \foreach \y in {0.9,1.65,...,20.1} {\draw[catink,opacity=.10,line width=.25pt] (0.55,\y)--(\pagew-0.55,\y);}
-  \foreach \x/\y in {1.0/3.2,1.0/8.2,1.0/13.4,28.75/4.8,28.75/10.5,28.75/15.7} {
-    \node[catink,opacity=.55,font=\large] at (\x,\y) {$\blacklozenge$};
+  \fill[left color=softblue!74,right color=palepink] (0.55,0.55) rectangle (\pagew-0.55,\pageh-0.55);
+  \draw[catink,line width=1.15pt] (0.55,0.55) rectangle (\pagew-0.55,\pageh-0.55);
+  \foreach \x in {0.9,1.65,...,28.8} {\draw[catink,opacity=.07,line width=.22pt] (\x,0.55)--(\x,\pageh-0.55);}
+  \foreach \y in {0.9,1.65,...,20.1} {\draw[catink,opacity=.07,line width=.22pt] (0.55,\y)--(\pagew-0.55,\y);}
+  \foreach \x/\y in {1.0/4.0,1.0/10.5,1.0/17.0,28.75/4.0,28.75/10.5,28.75/17.0} {
+    \node[catink,opacity=.38,font=\large] at (\x,\y) {$\blacklozenge$};
   }
 }
 
 \newcommand{\blankpagebg}{%
   \fill[forgeblack] (0,0) rectangle (\pagew,\pageh);
   \fill[palepink] (.55,.55) rectangle (\pagew-.55,\pageh-.55);
-  \draw[catink,line width=1.4pt] (.55,.55) rectangle (\pagew-.55,\pageh-.55);
-  \foreach \x in {1,2,...,28} {\draw[catink,opacity=.12,line width=.35pt] (\x,.55)--(\x,\pageh-.55);}
-  \foreach \y in {1,2,...,20} {\draw[catink,opacity=.12,line width=.35pt] (.55,\y)--(\pagew-.55,\y);}
+  \draw[catink,line width=1.15pt] (.55,.55) rectangle (\pagew-.55,\pageh-.55);
+  \foreach \x in {1,2,...,28} {\draw[catink,opacity=.08,line width=.25pt] (\x,.55)--(\x,\pageh-.55);}
+  \foreach \y in {1,2,...,20} {\draw[catink,opacity=.08,line width=.25pt] (.55,\y)--(\pagew-.55,\y);}
 }
 
 \newcommand{\newplannerpage}{\begin{tikzpicture}[x=1cm,y=1cm]\useasboundingbox (0,0) rectangle (\pagew,\pageh);\plannerbg}
@@ -50,27 +50,25 @@
 \newcommand{\finishdecorpage}{\end{tikzpicture}\clearpage}
 
 \newcommand{\panel}[4]{% x y w h
-  \fill[catcream,blur shadow={shadow blur steps=5,shadow opacity=.30}] ({#1},{#2}) rectangle ++(#3,#4);
-  \draw[catink,line width=1.05pt] ({#1},{#2}) rectangle ++(#3,#4);
-  \draw[catpink,line width=.35pt] ({#1+.08},{#2+.08}) rectangle ++({#3-.16},{#4-.16});
+  \fill[catcream] ({#1},{#2}) rectangle ++(#3,#4);
+  \draw[catink,line width=.85pt] ({#1},{#2}) rectangle ++(#3,#4);
+  \draw[catpink,line width=.28pt] ({#1+.10},{#2+.10}) rectangle ++({#3-.20},{#4-.20});
 }
 \newcommand{\roundpanel}[4]{%
-  \fill[catcream,rounded corners=5pt,blur shadow={shadow blur steps=6,shadow opacity=.32}] ({#1},{#2}) rectangle ++(#3,#4);
-  \draw[catink,line width=1.2pt,rounded corners=5pt] ({#1},{#2}) rectangle ++(#3,#4);
-  \draw[catpink,line width=.45pt,rounded corners=4pt] ({#1+.12},{#2+.12}) rectangle ++({#3-.24},{#4-.24});
+  \fill[catcream,rounded corners=4pt] ({#1},{#2}) rectangle ++(#3,#4);
+  \draw[catink,line width=1.0pt,rounded corners=4pt] ({#1},{#2}) rectangle ++(#3,#4);
+  \draw[catpink,line width=.38pt,rounded corners=3pt] ({#1+.14},{#2+.14}) rectangle ++({#3-.28},{#4-.28});
 }
 \newcommand{\headerbar}[4]{% x y w title
   \fill[catlav] ({#1},{#2}) rectangle ++(#3,.65);
-  \fill[catpink] ({#1},{#2}) rectangle ++(#3,.10);
-  \draw[catink,line width=.85pt] ({#1},{#2}) rectangle ++(#3,.65);
-  \node[font=\fontsize{7}{8}\selectfont\bfseries, text=catcream,anchor=west] at ({#1+.45},{#2+.35}) {\MakeUppercase{#4}};
-  \node[diamond,draw=catcream,fill=catpink,inner sep=1.8pt,font=\tiny] at ({#1+#3/2-3.2},{#2+.35}) {};
-  \node[diamond,draw=catcream,fill=catpink,inner sep=1.8pt,font=\tiny] at ({#1+#3/2+3.2},{#2+.35}) {};
+  \fill[catpink] ({#1},{#2}) rectangle ++(#3,.08);
+  \draw[catink,line width=.75pt] ({#1},{#2}) rectangle ++(#3,.65);
+  \node[font=\fontsize{7}{8}\selectfont\bfseries, text=catcream,anchor=west] at ({#1+.55},{#2+.35}) {\MakeUppercase{#4}};
+  \draw[catcream,opacity=.38,line width=.28pt] ({#1+4.0},{#2+.34})--({#1+#3-1.0},{#2+.34});
 }
 \newcommand{\plannerbadge}{%
-  \node[regular polygon,regular polygon sides=6,fill=catlav,draw=catink,line width=.9pt,minimum size=8.8mm] at (14.85,18.58) {};
-  \node[regular polygon,regular polygon sides=6,fill=catpink,draw=catcream,line width=.6pt,minimum size=5.8mm] at (14.85,18.58) {};
-  \node[font=\tiny,text=catcream] at (14.85,18.58) {$\blacklozenge$};
+  \node[regular polygon,regular polygon sides=6,fill=catlav,draw=catink,line width=.8pt,minimum size=7.8mm] at (14.85,18.58) {};
+  \node[regular polygon,regular polygon sides=6,fill=catpink,draw=catcream,line width=.45pt,minimum size=4.8mm] at (14.85,18.58) {};
 }
 \newcommand{\edgeornaments}{%
   \foreach \x/\y in {3.25/2.25,26.45/2.25,3.25/18.65,26.45/18.65,14.85/1.9,14.85/18.95} {
@@ -89,26 +87,25 @@
   \fill[catlav] ({#1},{#2+#4-.55}) rectangle ++(#3,.55);
   \draw[catink,line width=.45pt] ({#1},{#2+#4-.55}) rectangle ++(#3,.55);
   \node[font=\labelfont,text=catcream] at ({#1+#3/2},{#2+#4-.28}) {#5};
-  \foreach \lineidx in {1,...,10} {\pgfmathsetmacro{\liney}{#2+.25+\lineidx*.43}\draw[linegray!42,line width=.25pt] ({#1+.16},\liney)--({#1+#3-.16},\liney);}
+  \foreach \lineidx in {1,...,10} {\pgfmathsetmacro{\liney}{#2+.25+\lineidx*.43}\draw[linegray!34,line width=.22pt] ({#1+.16},\liney)--({#1+#3-.16},\liney);}
 }
 \newcommand{\gridbox}[6]{% x y w h cols rows
   \panel{#1}{#2}{#3}{#4}
-  \foreach \col in {1,...,#5} {\pgfmathsetmacro{\vx}{#1 + (#3*\col/#5)}\draw[linegray!62,line width=.35pt] (\vx,#2)--(\vx,{#2+#4});}
-  \foreach \rowline in {1,...,#6} {\pgfmathsetmacro{\vy}{#2 + (#4*\rowline/#6)}\draw[linegray!62,line width=.35pt] (#1,\vy)--({#1+#3},\vy);}
+  \foreach \col in {1,...,#5} {\pgfmathsetmacro{\vx}{#1 + (#3*\col/#5)}\draw[linegray!48,line width=.28pt] (\vx,#2)--(\vx,{#2+#4});}
+  \foreach \rowline in {1,...,#6} {\pgfmathsetmacro{\vy}{#2 + (#4*\rowline/#6)}\draw[linegray!48,line width=.28pt] (#1,\vy)--({#1+#3},\vy);}
 }
 \newcommand{\checkboxlist}[5]{% x y count spacing color
-  \foreach \checkidx in {1,...,#3} {\pgfmathsetmacro{\cx}{#1}\pgfmathsetmacro{\cy}{#2 - (#4*\checkidx)}\node[draw=#5,circle,minimum size=2.3mm,inner sep=0pt] at (\cx,\cy) {};}
+  \foreach \checkidx in {1,...,#3} {\pgfmathsetmacro{\cx}{#1}\pgfmathsetmacro{\cy}{#2 - (#4*\checkidx)}\node[draw=#5,regular polygon,regular polygon sides=4,rotate=45,minimum size=2.15mm,inner sep=0pt,line width=.32pt] at (\cx,\cy) {};}
 }
 \newcommand{\tabs}{%
   \foreach \x/\c in {6.2/catlav,9.4/catblue,12.6/catcream,15.8/catpink} {
-    \fill[\c,rounded corners=2pt] (\x,18.95) rectangle ++(2.4,.35);
-    \draw[catink,line width=.8pt,rounded corners=2pt] (\x,18.95) rectangle ++(2.4,.35);
+    \fill[\c,rounded corners=1.5pt] (\x,18.98) rectangle ++(2.4,.26);
+    \draw[catink,line width=.55pt,rounded corners=1.5pt] (\x,18.98) rectangle ++(2.4,.26);
   }
 }
 
 \newcommand{\chibicat}[3]{% x y scale -- now an iron wolf crest
   \begin{scope}[shift={(#1,#2)},scale=#3]
-    \fill[forgeblack,opacity=.16] (-1.55,-1.55) ellipse (1.9 and .35);
     \fill[catlav,draw=catink,line width=1.1pt] (0,1.45) -- (1.22,.62) -- (.92,-.82) -- (0,-1.55) -- (-.92,-.82) -- (-1.22,.62) -- cycle;
     \draw[catpink,line width=.45pt] (0,1.17) -- (.92,.5) -- (.68,-.62) -- (0,-1.15) -- (-.68,-.62) -- (-.92,.5) -- cycle;
     \fill[catcream] (-.58,.34) -- (-.18,.12) -- (-.48,-.05) -- cycle;
@@ -122,12 +119,17 @@
 }
 
 \newcommand{\decorbanner}[1]{%
-  \node[font=\fontsize{28}{30}\selectfont\bfseries,text=catlav,draw=catpink,line width=.3pt] at (14.85,10.8) {\MakeUppercase{#1}};
-  \draw[catink,line width=1.2pt] (9.2,9.55) .. controls (11.5,8.1) and (16.6,8.0) .. (20.4,10.0);
-  \foreach \x/\y in {8.9/12.6,10.0/13.1,19.2/12.3,20.3/11.8} {\node[regular polygon,regular polygon sides=3,draw=catink,fill=catcream,minimum size=8mm] at (\x,\y) {};}
-  \node[regular polygon,regular polygon sides=6,draw=catpink,fill=catlav,line width=1pt,minimum size=10mm] at (14.85,13.3) {};
-  \foreach \x/\n/\c in {11.6/1/catpink,13.7/2/catblue,15.8/3/catlav,17.9/4/white} {
-    \node[circle,fill=\c,draw=white,text=white,font=\bfseries] at (\x,6.5) {\n};
+  \fill[catlav] (9.0,9.9) rectangle (20.7,11.55);
+  \fill[catpink] (9.0,9.9) rectangle (20.7,10.05);
+  \draw[catink,line width=.95pt] (9.0,9.9) rectangle (20.7,11.55);
+  \draw[catpink,line width=.45pt] (9.25,10.15) rectangle (20.45,11.30);
+  \node[font=\fontsize{26}{28}\selectfont\bfseries,text=catcream] at (14.85,10.78) {\MakeUppercase{#1}};
+  \draw[catink,line width=.75pt] (6.6,10.72)--(8.55,10.72);
+  \draw[catink,line width=.75pt] (21.15,10.72)--(23.1,10.72);
+  \node[regular polygon,regular polygon sides=6,draw=catink,fill=catpink,line width=.75pt,minimum size=8mm] at (14.85,12.55) {};
+  \node[font=\tiny,text=catcream] at (14.85,12.55) {$\blacklozenge$};
+  \foreach \x/\n/\c in {11.7/1/catpink,13.8/2/catblue,15.9/3/catlav,18.0/4/catcream} {
+    \node[circle,fill=\c,draw=catink,text=catcream,font=\bfseries,minimum size=7mm] at (\x,7.2) {\n};
   }
 }
 
@@ -135,13 +137,17 @@
   \newdecorpage
     \fill[forgeblack] (0,0) rectangle (\pagew,\pageh);
     \fill[left color=catlav,right color=forgeblack] (.55,.55) rectangle (\pagew-.55,\pageh-.55);
-    \draw[catpink,line width=1.2pt] (1.1,1.1) rectangle (\pagew-1.1,\pageh-1.1);
-    \fill[catcream] (14.85,10.9) circle (5.55);
-    \fill[catpink] (14.85,10.9) circle (5.05);
-    \fill[catlav] (14.85,10.9) circle (4.65);
-    \node[font=\fontsize{24}{26}\selectfont\bfseries,text=catcream] at (14.85,17.45) {IRON PLANNER};
-    \node[font=\fontsize{8}{10}\selectfont\bfseries,text=softlav] at (14.85,16.62) {DISCIPLINE • DUTY • EXECUTION};
-    \chibicat{14.85}{9.6}{2.85}
+    \draw[catpink,line width=1.0pt] (1.1,1.1) rectangle (\pagew-1.1,\pageh-1.1);
+    \draw[catcream,opacity=.40,line width=.35pt] (1.45,1.45) rectangle (\pagew-1.45,\pageh-1.45);
+    \node[font=\fontsize{26}{28}\selectfont\bfseries,text=catcream] at (14.85,17.35) {IRON PLANNER};
+    \draw[catpink,line width=.65pt] (11.6,16.68)--(18.1,16.68);
+    \node[font=\fontsize{8}{10}\selectfont\bfseries,text=softlav] at (14.85,16.18) {DISCIPLINE • DUTY • EXECUTION};
+    \fill[catcream] (14.85,10.15) circle (4.55);
+    \fill[catpink] (14.85,10.15) circle (4.15);
+    \fill[catlav] (14.85,10.15) circle (3.82);
+    \draw[catcream,line width=.35pt] (14.85,10.15) circle (3.35);
+    \chibicat{14.85}{9.95}{2.25}
+    \node[font=\fontsize{7}{9}\selectfont\bfseries,text=softlav] at (14.85,3.25) {FORGED FOR DELIBERATE DAYS};
   \finishdecorpage
 }
 
@@ -151,10 +157,10 @@
   \newplannerpage\mainframe{Index}\tabs
   \foreach \w/\x in {W1/4.2,W2/6.7,W3/9.2,W4/11.7} {\node[font=\labelfont] at (\x,17.1) {\w};}
   \foreach \rowidx/\day in {0/SUN,1/MON,2/TUE,3/WED,4/THU,5/FRI,6/SAT} {
-    \foreach \x in {4.2,6.7,9.2,11.7} {\fill[white] ({\x-1.0},{16.45-\rowidx*1.1}) rectangle ++(2,.75);\draw[catink,line width=.45pt] ({\x-1.0},{16.45-\rowidx*1.1}) rectangle ++(2,.75);\node[font=\labelfont] at ({\x},{16.82-\rowidx*1.1}) {\day};}
+    \foreach \x in {4.2,6.7,9.2,11.7} {\fill[catcream] ({\x-1.0},{16.45-\rowidx*1.1}) rectangle ++(2,.75);\draw[catink,line width=.45pt] ({\x-1.0},{16.45-\rowidx*1.1}) rectangle ++(2,.75);\node[font=\labelfont] at ({\x},{16.82-\rowidx*1.1}) {\day};}
   }
   \foreach \idx/\itemlabel in {0/Health,1/Water Tracker,2/30-Day Productive Life,3/Vitamin Tracker,4/Doctor Visits,5/30-Day Mental Health,6/Finance,7/Debt Tracker,8/Sinking Funds,9/Savings Tracker,10/Monthly Budget,11/Bill Tracker} {
-    \fill[white] ({15.1},{16.65-\idx*.82}) rectangle ++(9.2,.55);\draw[catink,line width=.4pt] ({15.1},{16.65-\idx*.82}) rectangle ++(9.2,.55);\node[font=\labelfont] at ({19.7},{16.93-\idx*.82}) {\itemlabel};
+    \fill[catcream] ({15.1},{16.65-\idx*.82}) rectangle ++(9.2,.55);\draw[catink,line width=.4pt] ({15.1},{16.65-\idx*.82}) rectangle ++(9.2,.55);\node[font=\labelfont] at ({19.7},{16.93-\idx*.82}) {\itemlabel};
   }
   \foreach \idx/\itemlabel in {0/Productivity,1/Study Planner,2/Meeting Notes,3/To-Do List,4/Goal Planner,5/Project Planner} {
     \fill[catcream] ({4.1},{6.25-\idx*.72}) rectangle ++(9.7,.48);\draw[catink,line width=.4pt] ({4.1},{6.25-\idx*.72}) rectangle ++(9.7,.48);\node[font=\labelfont] at ({8.95},{6.49-\idx*.72}) {\itemlabel};

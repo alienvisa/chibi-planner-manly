@@ -12,6 +12,8 @@ The layout remains the same planner structure, but the visual language has been 
 - brass/copper accent rules
 - parchment writing panels
 - sharper geometric ornaments instead of soft pastel decorations
+- cleaner print-oriented panels with reduced visual noise
+- stronger divider pages with plaque-style section titles
 - wolf/shield crest cover art in place of the chibi cat motif
 
 ## Build

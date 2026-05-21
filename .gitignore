@@ -11,5 +11,6 @@
 *.xdv
 *.bbl
 *.blg
+main.pdf
 build/
 .DS_Store

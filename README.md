@@ -1,37 +1,25 @@
-# Chibi Planner
+# Iron Planner
 
-A LaTeX/Overleaf-managed reconstruction of the Chibi Cat Digital Planner.
+A masculine, editable LaTeX/TikZ redesign of the original Chibi Planner layout.
 
-## Build modes
+This repository was created as a separate GitHub project so the previous `chibi-planner` work remains untouched.
 
-This repo now contains two versions:
+## Theme
 
-1. **Pixel-perfect source-backed planner** — `main.tex`
-   - Uses the original PDF pages as full-page LaTeX backgrounds.
-   - This is the closest possible visual recreation because it preserves the exported Canva artwork exactly.
-   - Best for printing, sharing, and maintaining a faithful PDF from Overleaf/GitHub Actions.
+The layout remains the same planner structure, but the visual language has been reforged:
 
-2. **Editable TikZ reconstruction** — `editable-reconstruction.tex`
-   - Rebuilds the planner with LaTeX/TikZ templates.
-   - Easier to modify structurally, but not pixel-perfect.
-   - Useful as a starting point for replacing page backgrounds with fully editable elements over time.
+- charcoal and gunmetal backgrounds
+- brass/copper accent rules
+- parchment writing panels
+- sharper geometric ornaments instead of soft pastel decorations
+- wolf/shield crest cover art in place of the chibi cat motif
 
-## Build on Overleaf
+## Build
 
-Upload/import the repository and compile `main.tex` for the pixel-perfect version.
-
-To work on the editable approximation, set Overleaf's main document to:
-
-```text
-editable-reconstruction.tex
-```
-
-## Local build
-
-With a full TeX installation:
+Compile the editable TeX planner:
 
 ```bash
-latexmk -pdf main.tex
+latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 ```
 
 Or with Docker:
@@ -43,13 +31,14 @@ docker run --rm -v "$PWD:/work" -w /work ghcr.io/xu-cheng/texlive-full:latest \
 
 ## Files
 
-- `main.tex` — pixel-perfect source-backed planner
-- `editable-reconstruction.tex` — editable TikZ reconstruction
-- `tex/planner-style.tex` — reusable TikZ styles/templates
-- `tex/planner-pages.tex` — editable reconstruction page order
-- `source/chibi-cat-digital-planner.pdf` — source page artwork used by `main.tex`
-- `docs/page-map.md` — page structure notes
+- `main.tex` — editable Iron Planner build
+- `tex/planner-style.tex` — theme, drawing macros, panels, cover art, ornamentation
+- `tex/planner-pages.tex` — page order and planner layout
+- `editable-reconstruction.tex` — original editable reconstruction entrypoint retained for reference
+- `source/chibi-cat-digital-planner.pdf` — original source PDF retained for comparison/reference
 
-## Notes
+## Original work
 
-The pixel-perfect version is faithful because it embeds the source pages. The editable reconstruction remains available for gradual conversion into editable LaTeX components.
+Original repository: <https://github.com/alienvisa/chibi-planner>
+
+This repository intentionally does not overwrite that work.

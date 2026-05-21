@@ -1,4 +1,4 @@
-name: Build planner PDF
+name: Build Iron Planner PDF
 
 on:
   push:
@@ -21,5 +21,5 @@ jobs:
       - name: Upload compiled PDF
         uses: actions/upload-artifact@v4
         with:
-          name: chibi-planner-pdf
+          name: iron-planner-pdf
           path: main.pdf

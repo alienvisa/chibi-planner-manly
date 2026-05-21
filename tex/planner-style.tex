@@ -18,8 +18,9 @@
 \definecolor{catbrown}{HTML}{8C5A4A}
 \definecolor{catpeach}{HTML}{F6D3B8}
 
-\newcommand{\smallcapslabel}[1]{\fontsize{5.2}{6}\selectfont\bfseries\MakeUppercase{#1}}
-\newcommand{\sectionlabel}[1]{\node[font=\smallcapslabel, text=catink] at (0,0) {#1};}
+\newcommand{\labelfont}{\fontsize{5.2}{6}\selectfont\bfseries}
+\newcommand{\smallcapslabel}[1]{{\labelfont\MakeUppercase{#1}}}
+\newcommand{\sectionlabel}[1]{\node[font=\labelfont, text=catink] at (0,0) {#1};}
 
 \newcommand{\plannerbg}{%
   \begin{tikzpicture}[remember picture,overlay,x=1cm,y=1cm]
@@ -72,7 +73,7 @@
   \panel{#1}{#2}{#3}{#4}
   \fill[softlav] (#1,#2+#4-.55) rectangle ++(#3,.55);
   \draw[catink,line width=.45pt] (#1,#2+#4-.55) rectangle ++(#3,.55);
-  \node[font=\smallcapslabel] at (#1+#3/2,#2+#4-.28) {#5};
+  \node[font=\labelfont] at (#1+#3/2,#2+#4-.28) {#5};
   \foreach \yy in {#2+.45,#2+.95,...,#2+#4-0.95} {\draw[linegray!35,line width=.25pt] (#1+.15,\yy)--(#1+#3-.15,\yy);}
 }
 \newcommand{\gridbox}[6]{% x y w h cols rows
@@ -131,24 +132,24 @@
 
 \newcommand{\indexpage}{%
   \newplannerpage\mainframe{Index}\tabs
-  \foreach \w/\x in {W1/4.2,W2/6.7,W3/9.2,W4/11.7} {\node[font=\smallcapslabel] at (\x,17.1) {\w};}
+  \foreach \w/\x in {W1/4.2,W2/6.7,W3/9.2,W4/11.7} {\node[font=\labelfont] at (\x,17.1) {\w};}
   \foreach \r/\day in {0/SUN,1/MON,2/TUE,3/WED,4/THU,5/FRI,6/SAT} {
-    \foreach \x in {4.2,6.7,9.2,11.7} {\fill[white] (\x-1.0,16.45-\r*1.1) rectangle ++(2,.75);\draw[catink,line width=.45pt] (\x-1.0,16.45-\r*1.1) rectangle ++(2,.75);\node[font=\smallcapslabel] at (\x,16.82-\r*1.1) {\day};}
+    \foreach \x in {4.2,6.7,9.2,11.7} {\fill[white] (\x-1.0,16.45-\r*1.1) rectangle ++(2,.75);\draw[catink,line width=.45pt] (\x-1.0,16.45-\r*1.1) rectangle ++(2,.75);\node[font=\labelfont] at (\x,16.82-\r*1.1) {\day};}
   }
   \foreach \i/\txt in {0/Health,1/Water Tracker,2/30-Day Productive Life,3/Vitamin Tracker,4/Doctor Visits,5/30-Day Mental Health,6/Finance,7/Debt Tracker,8/Sinking Funds,9/Savings Tracker,10/Monthly Budget,11/Bill Tracker} {
-    \fill[white] (15.1,16.65-\i*.82) rectangle ++(9.2,.55);\draw[catink,line width=.4pt] (15.1,16.65-\i*.82) rectangle ++(9.2,.55);\node[font=\smallcapslabel] at (19.7,16.93-\i*.82) {\txt};
+    \fill[white] (15.1,16.65-\i*.82) rectangle ++(9.2,.55);\draw[catink,line width=.4pt] (15.1,16.65-\i*.82) rectangle ++(9.2,.55);\node[font=\labelfont] at (19.7,16.93-\i*.82) {\txt};
   }
   \foreach \i/\txt in {0/Productivity,1/Study Planner,2/Meeting Notes,3/To-Do List,4/Goal Planner,5/Project Planner} {
-    \fill[white] (4.1,5.1-\i*.82) rectangle ++(9.7,.55);\draw[catink,line width=.4pt] (4.1,5.1-\i*.82) rectangle ++(9.7,.55);\node[font=\smallcapslabel] at (8.95,5.38-\i*.82) {\txt};
+    \fill[white] (4.1,5.1-\i*.82) rectangle ++(9.7,.55);\draw[catink,line width=.4pt] (4.1,5.1-\i*.82) rectangle ++(9.7,.55);\node[font=\labelfont] at (8.95,5.38-\i*.82) {\txt};
   }
   \finishplannerpage
 }
 
 \newcommand{\monthlyplannerpage}{%
   \newplannerpage\mainframe{Monthly Planner}\tabs
-  \node[font=\smallcapslabel] at (5.0,16.8) {Memo};
+  \node[font=\labelfont] at (5.0,16.8) {Memo};
   \linedbox{3.7}{3.0}{3.0}{13.4}{}
-  \foreach \i/\d in {0/S,1/M,2/T,3/W,4/T,5/F,6/S} {\node[font=\smallcapslabel] at (8.2+\i*2.45,16.8) {\d};}
+  \foreach \i/\d in {0/S,1/M,2/T,3/W,4/T,5/F,6/S} {\node[font=\labelfont] at (8.2+\i*2.45,16.8) {\d};}
   \gridbox{6.7}{3.0}{18.0}{13.4}{7}{6}
   \finishplannerpage
 }
@@ -166,7 +167,7 @@
 
 \newcommand{\weeklyplannerpage}{%
   \newplannerpage\mainframe{Weekly Planner}\tabs
-  \foreach \i/\d in {0/S,1/M,2/T,3/W,4/T,5/F,6/S} {\node[font=\smallcapslabel] at (5.1+\i*2.95,16.8) {\d};}
+  \foreach \i/\d in {0/S,1/M,2/T,3/W,4/T,5/F,6/S} {\node[font=\labelfont] at (5.1+\i*2.95,16.8) {\d};}
   \gridbox{3.7}{10.7}{21.9}{5.7}{7}{1}
   \linedbox{3.7}{5.0}{6.2}{4.8}{Focus}
   \linedbox{10.3}{5.0}{8.0}{4.8}{List}
@@ -179,8 +180,8 @@
 
 \newcommand{\mealplannerpage}{%
   \newplannerpage\mainframe{Weekly Meal Plan}\tabs
-  \foreach \i/\t in {0/Breakfast,1/Lunch,2/Snack,3/Dinner} {\node[font=\smallcapslabel] at (5.7+\i*3.55,16.7) {\t};}
-  \foreach \r/\d in {0/S,1/M,2/T,3/W,4/T,5/F,6/S} {\node[font=\smallcapslabel] at (4.0,15.55-\r*1.55) {\d};}
+  \foreach \i/\t in {0/Breakfast,1/Lunch,2/Snack,3/Dinner} {\node[font=\labelfont] at (5.7+\i*3.55,16.7) {\t};}
+  \foreach \r/\d in {0/S,1/M,2/T,3/W,4/T,5/F,6/S} {\node[font=\labelfont] at (4.0,15.55-\r*1.55) {\d};}
   \gridbox{4.7}{5.0}{14.2}{11.3}{4}{7}
   \linedbox{19.4}{12.3}{5.8}{4.2}{My Goal}
   \linedbox{19.4}{5.0}{5.8}{6.7}{Groceries}
@@ -190,7 +191,7 @@
 
 \newcommand{\selfcarepage}{%
   \newplannerpage\mainframe{Self-Care Routine}\tabs
-  \foreach \i/\d in {0/S,1/M,2/T,3/W,4/T,5/F,6/S} {\node[font=\smallcapslabel] at (5.2+\i*2.75,16.6) {\d};}
+  \foreach \i/\d in {0/S,1/M,2/T,3/W,4/T,5/F,6/S} {\node[font=\labelfont] at (5.2+\i*2.75,16.6) {\d};}
   \gridbox{3.7}{10.8}{19.8}{5.5}{7}{1}
   \linedbox{3.7}{4.2}{9.3}{5.8}{Morning}
   \linedbox{13.5}{4.2}{7.1}{5.8}{Evening}
@@ -202,7 +203,7 @@
   \newplannerpage\mainframe{Medication Schedule}\tabs
   \foreach \row/\label in {0/Morning,1/Afternoon,2/Evening} {
     \pgfmathsetmacro{\y}{13.1-\row*4.25}
-    \node[font=\smallcapslabel] at (5.0,\y+2.4) {\label};
+    \node[font=\labelfont] at (5.0,\y+2.4) {\label};
     \gridbox{3.7}{\y}{9.4}{3.6}{3}{5}
     \foreach \i/\h in {0/Time,1/B\/A,2/Dose} {\node[font=\tiny\bfseries] at (7.0+\i*2.1,\y+3.35) {\h};}
     \foreach \i/\d in {0/S,1/M,2/T,3/W,4/T,5/F,6/S} {\node[font=\tiny\bfseries] at (14.1+\i*1.35,\y+3.35) {\d};\gridbox{13.5+\i*1.35}{\y}{1.25}{3.6}{1}{5}}
@@ -237,9 +238,9 @@
 \newcommand{\trackerpage}[1]{\newplannerpage\mainframe{#1}\tabs\gridbox{3.7}{3.4}{15.8}{13.0}{15}{12}\linedbox{20.0}{10.4}{5.2}{6.0}{Notes}\linedbox{20.0}{3.4}{5.2}{6.3}{Plan}\finishplannerpage}
 \newcommand{\vitaminpage}{\newplannerpage\mainframe{Vitamin Tracker}\tabs\foreach \i in {0,...,29} {\node[circle,draw=catink,minimum size=7mm] at (4.6+mod(\i,10)*1.35,14.9-floor(\i/10)*2.0) {};\node[font=\tiny] at (4.6+mod(\i,10)*1.35,14.25-floor(\i/10)*2.0) {\i};}\linedbox{3.7}{3.4}{21.6}{5.5}{Notes}\finishplannerpage}
 \newcommand{\doctorpage}{\newplannerpage\mainframe{Doctor Visits}\tabs\linedbox{3.7}{13.4}{7.0}{3.3}{Doctor Name}\linedbox{11.2}{13.4}{7.0}{3.3}{Date}\linedbox{18.7}{13.4}{6.6}{3.3}{Location}\linedbox{3.7}{9.5}{10.5}{3.3}{Tests / Questions}\linedbox{14.7}{9.5}{10.6}{3.3}{Notes}\linedbox{3.7}{3.4}{21.6}{5.5}{Prescription}\finishplannerpage}
-\newcommand{\debtpage}{\newplannerpage\mainframe{Debt Tracker}\tabs\foreach \i/\t in {0/Debt,1/Start,2/Rate,3/Payoff} {\node[font=\smallcapslabel] at (5.8+\i*5.0,16.3) {\t};}\gridbox{3.7}{3.4}{21.6}{12.5}{4}{12}\finishplannerpage}
-\newcommand{\sinkingpage}{\newplannerpage\mainframe{Sinking Funds}\tabs\foreach \i/\t in {0/Fund,1/Goal,2/Saved,3/Balance} {\node[font=\smallcapslabel] at (5.8+\i*5.0,16.3) {\t};}\gridbox{3.7}{3.4}{21.6}{12.5}{4}{12}\finishplannerpage}
-\newcommand{\savingpage}{\newplannerpage\mainframe{Savings Tracker}\tabs\foreach \i/\t in {0/Item,1/Plan,2/Saved,3/Balance} {\node[font=\smallcapslabel] at (5.8+\i*5.0,16.3) {\t};}\gridbox{3.7}{3.4}{21.6}{12.5}{4}{12}\finishplannerpage}
+\newcommand{\debtpage}{\newplannerpage\mainframe{Debt Tracker}\tabs\foreach \i/\t in {0/Debt,1/Start,2/Rate,3/Payoff} {\node[font=\labelfont] at (5.8+\i*5.0,16.3) {\t};}\gridbox{3.7}{3.4}{21.6}{12.5}{4}{12}\finishplannerpage}
+\newcommand{\sinkingpage}{\newplannerpage\mainframe{Sinking Funds}\tabs\foreach \i/\t in {0/Fund,1/Goal,2/Saved,3/Balance} {\node[font=\labelfont] at (5.8+\i*5.0,16.3) {\t};}\gridbox{3.7}{3.4}{21.6}{12.5}{4}{12}\finishplannerpage}
+\newcommand{\savingpage}{\newplannerpage\mainframe{Savings Tracker}\tabs\foreach \i/\t in {0/Item,1/Plan,2/Saved,3/Balance} {\node[font=\labelfont] at (5.8+\i*5.0,16.3) {\t};}\gridbox{3.7}{3.4}{21.6}{12.5}{4}{12}\finishplannerpage}
 \newcommand{\budgetpage}{\newplannerpage\mainframe{Monthly Budget}\tabs\linedbox{3.7}{12.5}{5.0}{4.2}{Income}\linedbox{9.1}{12.5}{5.0}{4.2}{Fixed}\linedbox{14.5}{12.5}{5.0}{4.2}{Variable}\linedbox{19.9}{12.5}{5.4}{4.2}{Budget}\linedbox{3.7}{7.0}{10.0}{4.9}{Savings}\linedbox{14.2}{7.0}{11.1}{4.9}{Expenses}\linedbox{3.7}{3.4}{21.6}{3.0}{Summary}\finishplannerpage}
 \newcommand{\billpage}{\newplannerpage\mainframe{Bill Tracker}\tabs\gridbox{3.7}{3.5}{16.5}{12.8}{3}{12}\foreach \i/\d in {0/S,1/M,2/T,3/W,4/T,5/F,6/S} {\node[font=\tiny\bfseries] at (21.2+\i*.55,15.8) {\d};\draw (20.95+\i*.55,3.5) rectangle ++(.42,11.8);}\finishplannerpage}
 \newcommand{\certificatepage}{\newdecorpage\fill[left color=softblue,right color=softpink] (0,0) rectangle (\pagew,\pageh);\roundpanel{7.0}{4.2}{15.7}{12.5}\node[font=\fontsize{20}{22}\selectfont\bfseries,text=catpink] at (14.85,13.9) {CERTIFICATE OF};\node[font=\fontsize{13}{15}\selectfont\bfseries,text=catlav] at (14.85,12.8) {CAPABILITY \& COMPLETION};\node[font=\large,text=linegray] at (14.85,10.7) {This certifies that};\draw[linegray!50] (10.8,9.7)--(18.9,9.7);\node[font=\small,text=linegray,align=center] at (14.85,8.4) {has successfully completed the Digital\\Planner for calm minds, charming organization,\\and tactical command.};\node[font=\scriptsize,text=catpink] at (14.85,6.1) {Chibi Planner Studio};\node[font=\large] at (21.4,5.1) {$\heartsuit$};\finishdecorpage}
